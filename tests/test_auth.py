@@ -135,9 +135,74 @@ def test_register_duplicate_username(client):
 
     assert first_response.status_code == 201
     assert second_response.status_code == 409
+
+def test_login_success(client):
+	client.post(
+	    "/api/auth/register",
+		json={
+		   "username": "Test_User",
+		   "email": "test@example.com",
+		   "password": "SecurePassword@4321",
+		   "preferred_language": "python"
+		}
+	)
+	
+	response = client.post(
+	    "/api/auth/login",
+		json={
+		   "username": "Test_User",
+		   "password": "SecurePassword@4321"
+		}
+	)
+	
+	assert response.status_code == 200
+	
+	data = response.get_json()
+	
+	assert data["message"] == "Login successful"
+	assert "access_token" in data
+	assert data["user"]["username"] == "Test_User"
+
+def test_login_username_missing(client):
+	client.post(
+	    "/api/auth/register",
+		json={
+		   "username": "Test_User",
+		   "email": "test@example.com",
+		   "password": "SecurePassword@4321",
+		   "preferred_language": "python"
+		}
+	)
+	
+	response = client.post(
+	    "/api/auth/login",
+		json={
+		   "password": "SecurePassword@4321"
+		}
+	)
+	
+	assert response.status_code == 400
 	
 
-
+def test_login_password_missing(client):
+	client.post(
+	    "/api/auth/register",
+		json={
+		   "username": "Test_User",
+		   "email": "test@example.com",
+		   "password": "SecurePassword@4321",
+		   "preferred_language": "python"
+		}
+	)
+	
+	response = client.post(
+	    "/api/auth/login",
+		json={
+		   "username": "Test_User"
+		}
+	)
+	
+	assert response.status_code == 400
 
 
 

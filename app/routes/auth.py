@@ -77,5 +77,47 @@ def register():
 		   "preferred_language": preferred_language
 		}
 	}), 201
+	
+@auth_bp.route("/login", methods=["POST"])
+def login():
+	data = request.get_json()
+	
+	if not data:
+		return jsonify({
+		   "error" : "Request body is required"
+		}), 400
+	
+	username = data.get("username")
+	password = data.get("password")
+	
+	if not username or not password:
+		return jsonify({
+		   "error" : "Username and Password are required"
+		}), 400
+	
+	user = User.query.filter_by(username=username).first()
+	
+	if not user:
+		return jsonify({
+		     "error": "Invalid username or password"
+		}), 401
+		
+	if not bcrypt.check_password_hash(user.password, password):
+		return jsonify({
+		     "error": "Invalid username or password"
+		}), 401
+		
+	access_token = create_access_token(identity=str(user.user_id))
+	
+	return jsonify({
+        "message": "Login successful",
+        "access_token": access_token,
+        "user": {
+		    "user_id": user.user_id,
+			"username": user.username,
+			"email": user.email,
+			"preferred_language": user.preferred_language
+		}		
+	}), 200
 		
 	
