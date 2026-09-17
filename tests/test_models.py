@@ -3,6 +3,8 @@ import pytest
 from app import create_app, db
 from app.models.problem import Problem
 from app.models.testcase import TestCase
+from app.models.submission import Submission
+from app.models.user import User 
 
 @pytest.fixture
 def app():
@@ -238,6 +240,93 @@ def test_day_number_must_be_unique(app):
         db.session.commit()
 
     db.session.rollback()
+	
+
+def test_submission_belongs_to_user_and_problem(app):
+    with app.app_context():
+        user = User(
+            username="submission_user",
+            email="submission@example.com",
+            password="hashed_password",
+            preferred_language="Python"
+        )
+
+        problem = Problem(
+            day_number=1,
+            topic="Java Foundations",
+            sub_topic="Variables",
+            difficulty=1,
+            title="Test Problem",
+            description="Test description",
+            input_format="Input",
+            output_format="Output",
+            constraints="None",
+            time_limit=1000
+        )
+
+        db.session.add(user)
+        db.session.add(problem)
+        db.session.commit()
+
+        submission = Submission(
+            user_id=user.user_id,
+            problem_id=problem.problem_id,
+            language="Python",
+            status="accepted",
+            execution_time=125
+        )
+
+        db.session.add(submission)
+        db.session.commit()
+
+        assert submission.user_id == user.user_id
+        assert submission.problem_id == problem.problem_id
+
+
+def test_submission_stores_result_metadata(app):
+    with app.app_context():
+        user = User(
+            username="result_user",
+            email="result@example.com",
+            password="hashed_password",
+            preferred_language="Python"
+        )
+
+        problem = Problem(
+            day_number=2,
+            topic="Decision Making",
+            sub_topic="if",
+            difficulty=2,
+            title="Test Problem",
+            description="Test description",
+            input_format="Input",
+            output_format="Output",
+            constraints="None",
+            time_limit=1000
+        )
+
+        db.session.add_all([user, problem])
+        db.session.commit()
+
+        submission = Submission(
+            user_id=user.user_id,
+            problem_id=problem.problem_id,
+            language="Java",
+            status="wrong_answer",
+            execution_time=250
+        )
+
+        db.session.add(submission)
+        db.session.commit()
+
+        saved = Submission.query.first()
+
+        assert saved.language == "Java"
+        assert saved.status == "wrong_answer"
+        assert saved.execution_time == 250
+        assert saved.submitted_at is not None
+
+
 	
 
 
