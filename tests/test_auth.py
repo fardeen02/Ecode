@@ -1,25 +1,3 @@
-import pytest
-from app import create_app, db
-
-class TestConfig:
-	TESTING = True
-	SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
-	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	SECRET_KEY = "test-jwt-secret-key-32-characters-long"
-	JWT_SECRET_KEY = "abcdefghijklmnopqrstuvwxyz123456"
-	
-@pytest.fixture
-def client():
-	app = create_app(TestConfig)
-	
-	with app.app_context():
-		db.create_all()
-	
-	with app.test_client() as client:
-		yield client
-		
-	with app.app_context():
-		db.drop_all()
 		
 def test_register_user(client):
 	response = client.post(
