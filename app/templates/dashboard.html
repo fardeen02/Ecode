@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050807">
+  <title>ECODE // Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="app-page scanlines">
+  <header class="app-header shell">
+    <a class="brand" href="{{ url_for('main.home') }}">
+      <span class="brand-mark">ECODE</span><span class="brand-cursor">_</span>
+    </a>
+    <div class="app-session">
+      <span class="status-dot"></span>
+      <span>session://active</span>
+      <span class="divider"></span>
+      <span id="userIdentity">coder</span>
+      <button id="logoutButton" class="logout-button">[ logout ]</button>
+    </div>
+  </header>
+
+  <div class="app-layout shell">
+    <aside class="sidebar">
+      <div class="sidebar-command">
+        <span class="muted">ecode@</span><span id="sidebarUser">coder</span><span class="muted">:~$</span>
+      </div>
+
+      <nav class="side-nav">
+        <a class="active" href="dashboard.html"><span>01</span> home</a>
+        <a href="#"><span>02</span> today's problem</a>
+        <a href="#"><span>03</span> progress</a>
+        <a href="#"><span>04</span> profile</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="mini-terminal">
+          <span class="muted">&gt; system</span>
+          <strong>1P MODE</strong>
+          <small>consistency enabled</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="dashboard">
+      <div class="dashboard-heading">
+        <div>
+          <span class="eyebrow">ecode@system:~$ status</span>
+          <h1>Good to see you, <span id="welcomeUser" class="accent">coder</span><span class="blink">_</span></h1>
+          <p>Small steps. Serious skill.</p>
+        </div>
+
+        <div class="day-counter">
+          <span>JOURNEY</span>
+          <strong>DAY <b>01</b> / 100</strong>
+        </div>
+      </div>
+
+      <section class="challenge-panel panel">
+        <div class="panel-header">
+          <span>&gt; TODAY'S CHALLENGE</span>
+          <span class="live-tag">AVAILABLE</span>
+        </div>
+
+        <div class="challenge-content">
+          <div class="challenge-main">
+            <div class="language-chip">PYTHON</div>
+            <h2>Today's problem is waiting.</h2>
+            <p>
+              Your first mission will appear here once the Challenge API
+              is connected. This screen is intentionally simple: one problem,
+              one day.
+            </p>
+
+            <div class="challenge-meta">
+              <span><b>DIFFICULTY</b> 01 / 10</span>
+              <span><b>TARGET</b> ~10 MIN</span>
+              <span><b>MODE</b> RANKED</span>
+            </div>
+
+            <button class="button button-primary" type="button" disabled>
+              [ START PROBLEM ]
+            </button>
+            <small class="coming-soon">challenge endpoint not connected yet</small>
+          </div>
+
+          <div class="challenge-terminal">
+            <div class="terminal-bar">
+              <span>daily_mission.txt</span>
+              <span>READ ONLY</span>
+            </div>
+            <pre>
+&gt; 1P — ONE PROBLEM.
+&gt; EVERY DAY.
+
+Rules:
+  [01] solve today's problem
+  [02] retry if you fail
+  [03] finish before tomorrow
+
+No penalty for failure.
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel progress-panel">
+          <div class="panel-header">
+            <span>&gt; YOUR PROGRESS</span>
+            <span class="muted">01P</span>
+          </div>
+
+          <div class="stat-grid">
+            <div class="stat">
+              <span>DAY STREAK</span>
+              <strong>0</strong>
+            </div>
+            <div class="stat">
+              <span>PROBLEMS</span>
+              <strong>0</strong>
+            </div>
+            <div class="stat">
+              <span>TOTAL SCORE</span>
+              <strong>0</strong>
+            </div>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 1%"></div>
+          </div>
+          <div class="progress-label">
+            <span>100 DAY JOURNEY</span>
+            <span>0 / 100</span>
+          </div>
+        </article>
+
+        <article class="panel terminal-panel">
+          <div class="panel-header">
+            <span>&gt; QUICK OUTPUT</span>
+            <span class="green">ONLINE</span>
+          </div>
+          <div class="output">
+            <p><span class="muted">system:</span> identity verified</p>
+            <p><span class="muted">system:</span> daily queue initialized</p>
+            <p><span class="green">system:</span> waiting for challenge service</p>
+            <p><span>&gt;</span> keep showing up<span class="blink">_</span></p>
+          </div>
+        </article>
+      </section>
+
+      <section class="quote-panel">
+        <span class="quote-mark">&gt;</span>
+        <p>Don't chase the number of problems. Chase the habit of solving.</p>
+        <span class="quote-source">— ECODE / 1P</span>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer shell">
+    <span>ECODE // v0.1</span>
+    <span>backend first. habit always.</span>
+    <span>system ready <span class="blink">_</span></span>
+  </footer>
+
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#050807">
+    <meta name="description" content="{% block description %}Ecode — 1P. One Problem. Every Day.{% endblock %}">
+
+    <title>{% block title %}ECODE{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    {% block head %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

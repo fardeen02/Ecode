@@ -1,0 +1,466 @@
+{% extends "base.html" %}
+
+{% block title %}ECODE // One Problem. Every Day.{% endblock %}
+
+{% block description %}
+Ecode — 1P. One Problem. Every Day.
+{% endblock %}
+
+{% block body_class %}scanlines{% endblock %}
+
+{% block content %}
+
+<div class="ambient ambient-a"></div>
+<div class="ambient ambient-b"></div>
+
+<header class="site-header shell">
+
+  <a
+    class="brand"
+    href="{{ url_for('main.home') }}"
+    aria-label="Ecode home"
+  >
+    <span class="brand-mark">ECODE</span>
+    <span class="brand-cursor">_</span>
+  </a>
+
+  <div class="header-command">
+    <span class="muted">guest@ecode:~$</span>
+    <span>./start</span>
+  </div>
+
+  <nav class="header-nav">
+
+    <a href="#mission">Mission</a>
+
+    <a href="#how">How it works</a>
+
+    <a
+      class="nav-login"
+      href="{{ url_for('main.login_page') }}"
+    >
+      [ login ]
+    </a>
+
+    <a
+      class="button button-small"
+      href="{{ url_for('main.register_page') }}"
+    >
+      register
+    </a>
+
+  </nav>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="hero shell">
+
+    <div class="hero-copy">
+
+      <div class="terminal-label">
+        <span class="status-dot"></span>
+        SYSTEM READY
+      </div>
+
+      <p class="prompt-line">
+        <span>&gt;</span> 1P — One Problem.
+      </p>
+
+      <h1>
+        Every Day<span class="blink">_</span>
+      </h1>
+
+      <p class="hero-text">
+        Stop measuring progress by how many problems you touched.
+        Solve one. Understand it. Come back tomorrow.
+      </p>
+
+      <div class="hero-actions">
+
+        <a
+          class="button button-primary"
+          href="{{ url_for('main.register_page') }}"
+        >
+          <span>[</span> START YOUR JOURNEY <span>]</span>
+        </a>
+
+        <a
+          class="text-link"
+          href="#mission"
+        >
+          read the mission →
+        </a>
+
+      </div>
+
+      <div class="command-output">
+
+        <div>
+          <span class="prompt">&gt;</span>
+          philosophy.load()
+        </div>
+
+        <div class="success">
+          [OK] consistency beats intensity.
+        </div>
+
+        <div class="success">
+          [OK] one problem is enough for today.
+        </div>
+
+        <div class="success">
+          [OK] tomorrow, another one.
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-terminal terminal-window">
+
+      <div class="terminal-bar">
+
+        <span class="terminal-dots">
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+
+        <span>
+          ecode://daily-session
+        </span>
+
+        <span class="terminal-state">
+          ONLINE
+        </span>
+
+      </div>
+
+
+      <div class="terminal-body">
+
+        <div class="ascii">
+
+          <pre>
+      /\                    /\
+     /  \      ECODE       /  \
+    / /\ \                / /\ \
+   / /  \ \              / /  \ \
+  /_/____\_\            /_/____\_\
+      ||                    ||
+      ||     1P             ||
+      ||  EVERY DAY         ||
+          </pre>
+
+        </div>
+
+
+        <div class="terminal-log">
+
+          <p>
+            <span class="muted">[09:41:02]</span>
+            user session detected
+          </p>
+
+          <p>
+            <span class="muted">[09:41:03]</span>
+            challenge queue loaded
+          </p>
+
+          <p>
+            <span class="green">[09:41:03]</span>
+            daily problem available
+          </p>
+
+          <p class="cursor-line">
+            <span>&gt;</span>
+            waiting for user<span class="blink">_</span>
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- MISSION -->
+
+  <section
+    id="mission"
+    class="section shell"
+  >
+
+    <div class="section-heading">
+
+      <span>01</span>
+
+      <h2>
+        // THE MISSION
+      </h2>
+
+    </div>
+
+
+    <div class="mission-grid">
+
+      <article class="mission-main panel">
+
+        <div class="panel-tag">
+          ecode@system:~/mission
+        </div>
+
+        <h3>
+          We don't need another<br>
+          <span class="accent">
+            problem warehouse.
+          </span>
+        </h3>
+
+        <p>
+          Ecode is built around a smaller promise: give your brain one
+          meaningful programming problem every day and make consistency
+          the habit.
+        </p>
+
+        <p>
+          Ranked daily practice is intentionally limited. You can fail,
+          retry, think, debug and learn — but the mission remains one
+          problem today.
+        </p>
+
+      </article>
+
+
+      <div class="principles">
+
+        <div class="principle">
+
+          <span class="principle-number">
+            01
+          </span>
+
+          <div>
+
+            <strong>
+              ONE PROBLEM
+            </strong>
+
+            <p>
+              Enough to make progress without turning practice into a
+              numbers game.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="principle">
+
+          <span class="principle-number">
+            02
+          </span>
+
+          <div>
+
+            <strong>
+              UNLIMITED RETRIES
+            </strong>
+
+            <p>
+              Failure is part of solving. No punishment for learning.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="principle">
+
+          <span class="principle-number">
+            03
+          </span>
+
+          <div>
+
+            <strong>
+              COME BACK TOMORROW
+            </strong>
+
+            <p>
+              The real score is whether you keep showing up.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOW IT WORKS -->
+
+  <section
+    id="how"
+    class="section shell"
+  >
+
+    <div class="section-heading">
+
+      <span>02</span>
+
+      <h2>
+        // THE LOOP
+      </h2>
+
+    </div>
+
+
+    <div class="loop">
+
+      <div class="loop-step">
+
+        <span>01</span>
+
+        <strong>
+          CONNECT
+        </strong>
+
+        <p>
+          Create your Ecode identity.
+        </p>
+
+      </div>
+
+
+      <div class="loop-arrow">
+        →
+      </div>
+
+
+      <div class="loop-step">
+
+        <span>02</span>
+
+        <strong>
+          RECEIVE
+        </strong>
+
+        <p>
+          Get today's challenge.
+        </p>
+
+      </div>
+
+
+      <div class="loop-arrow">
+        →
+      </div>
+
+
+      <div class="loop-step">
+
+        <span>03</span>
+
+        <strong>
+          SOLVE
+        </strong>
+
+        <p>
+          Think. Code. Retry.
+        </p>
+
+      </div>
+
+
+      <div class="loop-arrow">
+        →
+      </div>
+
+
+      <div class="loop-step">
+
+        <span>04</span>
+
+        <strong>
+          RETURN
+        </strong>
+
+        <p>
+          Come back tomorrow.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta shell">
+
+    <div>
+
+      <span class="eyebrow">
+        ecode@system:~$ ./begin
+      </span>
+
+      <h2>
+        Your first problem<br>
+        starts with
+        <span class="accent">
+          one decision.
+        </span>
+      </h2>
+
+    </div>
+
+
+    <a
+      class="button button-primary"
+      href="{{ url_for('main.register_page') }}"
+    >
+      [ CREATE ACCOUNT ]
+    </a>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer shell">
+
+  <span>
+    ECODE // v0.1
+  </span>
+
+  <span>
+    1P — One Problem. Every Day.
+  </span>
+
+  <span>
+    built for curious minds
+    <span class="blink">_</span>
+  </span>
+
+</footer>
+
+{% endblock %}
